@@ -1,0 +1,11 @@
+var R=require("../../../../chunks/[turbopack]_runtime.js")("server/app/api/auth/[...nextauth]/route.js")
+R.c("server/chunks/db587_next_8d807f10._.js")
+R.c("server/chunks/node_modules_@opentelemetry_api_build_esm_7e8f41ca._.js")
+R.c("server/chunks/db587_next-auth_404d3405._.js")
+R.c("server/chunks/db587_openid-client_5ed3bf3e._.js")
+R.c("server/chunks/db587_jose_dist_node_cjs_77d4cc4b._.js")
+R.c("server/chunks/db587_32c616ad._.js")
+R.c("server/chunks/[root-of-the-server]__098313bd._.js")
+R.c("server/chunks/sniffr__next-internal_server_app_api_auth_[___nextauth]_route_actions_516d60ee.js")
+R.m("[project]/sniffr/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/sniffr/src/app/api/auth/[...nextauth]/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)")
+module.exports=R.m("[project]/sniffr/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/sniffr/src/app/api/auth/[...nextauth]/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)").exports

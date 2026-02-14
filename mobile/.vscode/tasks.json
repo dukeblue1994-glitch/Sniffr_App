@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Expo: Start",
+            "type": "shell",
+            "command": "npx expo start",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Expo: Build (Android Local)",
+            "type": "shell",
+            "command": "npx expo run:android",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Expo: Build (iOS Local)",
+            "type": "shell",
+            "command": "npx expo run:ios",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "React Native: Check Environment",
+            "type": "shell",
+            "command": "${command:reactNative.testDevEnvironment}",
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean: Metro Cache",
+            "type": "shell",
+            "command": "npx expo start -c",
+            "problemMatcher": []
+        }
+    ]
+}

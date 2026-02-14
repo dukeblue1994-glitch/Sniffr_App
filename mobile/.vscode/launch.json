@@ -1,0 +1,51 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Android (Hermes)",
+            "cwd": "${workspaceFolder}",
+            "type": "reactnativedirect",
+            "request": "launch",
+            "platform": "android",
+            "logCatArguments": [
+                "*:S",
+                "ReactNative:V",
+                "ReactNativeJS:V"
+            ]
+        },
+        {
+            "name": "Debug iOS (Hermes)",
+            "cwd": "${workspaceFolder}",
+            "type": "reactnativedirect",
+            "request": "launch",
+            "platform": "ios"
+        },
+        {
+            "name": "Attach to Application (Hermes)",
+            "cwd": "${workspaceFolder}",
+            "type": "reactnativedirect",
+            "request": "attach"
+        },
+        {
+            "name": "Debug Expo Web",
+            "cwd": "${workspaceFolder}",
+            "type": "reactnativedirect",
+            "request": "launch",
+            "platform": "expoweb",
+            "browserTarget": "chrome",
+            "url": "http://localhost:8081"
+        },
+        {
+            "name": "Attach to Packager",
+            "cwd": "${workspaceFolder}",
+            "type": "reactnative",
+            "request": "attach",
+            "port": 8081
+        }
+    ],
+    "sourceMapPathOverrides": {
+        "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
+        "webpack:///./*": "${workspaceFolder}/*",
+        "webpack:///*": "*"
+    }
+}
