@@ -8,6 +8,7 @@ import 'react-native-reanimated';
 import '../global.css';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { initPurchases } from '@/src/lib/purchases';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -35,6 +36,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (loaded) {
+      initPurchases();
       SplashScreen.hideAsync();
     }
   }, [loaded]);

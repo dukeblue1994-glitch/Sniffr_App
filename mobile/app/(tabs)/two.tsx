@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView, TextInput } from 'react-native';
-import { Settings, Star, Edit2, Users, Sparkles, RefreshCw, Bone } from 'lucide-react-native';
+import { Settings, Star, Edit2, Users, Sparkles, RefreshCw, Bone, Shield, Info } from 'lucide-react-native';
+import { Link } from 'expo-router';
 import { useStore } from '../../src/store/useStore';
 
 export default function ProfileScreen() {
@@ -145,6 +146,22 @@ export default function ProfileScreen() {
               <Bone size={32} color="white" fill="white" className="opacity-50" />
             </TouchableOpacity>
           )}
+
+          {/* Legal & Support */}
+          <View className="mt-8 space-y-2">
+            <Link href="/privacy" asChild>
+              <TouchableOpacity className="flex-row items-center bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
+                <Shield size={16} color="#4B5563" />
+                <Text className="ml-2 text-gray-700 font-medium">Privacy Policy</Text>
+              </TouchableOpacity>
+            </Link>
+            <Link href="/terms" asChild>
+              <TouchableOpacity className="flex-row items-center bg-white p-3 rounded-xl border border-gray-100 shadow-sm mt-2">
+                <Info size={16} color="#4B5563" />
+                <Text className="ml-2 text-gray-700 font-medium">Terms of Service</Text>
+              </TouchableOpacity>
+            </Link>
+          </View>
 
           {/* Version Info */}
           <View className="mt-10 items-center opacity-30">

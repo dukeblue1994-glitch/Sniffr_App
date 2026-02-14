@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import * as Haptics from 'expo-haptics';
 import { Platform } from 'react-native';
+import { db, auth } from '../lib/firebase';
+import { collection, query, onSnapshot, where, orderBy, addDoc, serverTimestamp } from 'firebase/firestore';
 
 interface Dog {
   id: number;
@@ -55,6 +57,8 @@ interface AppState {
   setIsGeneratingBio: (val: boolean) => void;
   setIcebreakerSuggestions: (suggestions: string[]) => void;
   setDateSuggestion: (suggestion: string | null) => void;
+  subscribeToMatches: () => () => void;
+  sendFirestoreMessage: (matchId: string, text: string) => Promise<void>;
 }
 
 export const useStore = create<AppState>((set, get) => ({
@@ -96,6 +100,38 @@ export const useStore = create<AppState>((set, get) => ({
   setIsGeneratingBio: (val) => set({ isGeneratingBio: val }),
   setIcebreakerSuggestions: (suggestions) => set({ icebreakerSuggestions: suggestions }),
   setDateSuggestion: (suggestion) => set({ dateSuggestion: suggestion }),
+
+  subscribeToMatches: () => {
+    const user = auth.currentUser;
+    if (!user) return () => {};
+
+    const q = query(
+      collection(db, 'matches'),
+      where('userIds', 'array-contains', user.uid),
+      orderBy('updatedAt', 'desc')
+    );
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const matches = snapshot.docs.map(doc => ({
+        id: doc.id as any,
+        ...doc.data()
+      })) as Match[];
+      set({ matches });
+    });
+
+    return unsubscribe;
+  },
+
+  sendFirestoreMessage: async (matchId, text) => {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    await addDoc(collection(db, `matches/${matchId}/messages`), {
+      text,
+      senderId: user.uid,
+      createdAt: serverTimestamp(),
+    });
+  },
 
   handleSwipe: (direction, dogs) => {
     const { currentDogIndex, isGold } = get();

@@ -10,7 +10,7 @@ export default function ChatsScreen() {
 
   const renderMatch = ({ item }: { item: any }) => (
     <TouchableOpacity 
-      className="flex-row items-center p-4 border-b border-gray-100 bg-white"
+      className="flex-row items-center py-4 px-4 border-b border-gray-100 bg-white active:bg-gray-50"
       onPress={() => {
         setActiveChat(item);
         router.push(`/chat/${item.id}`);
@@ -28,12 +28,18 @@ export default function ChatsScreen() {
       <View className="ml-4 flex-1">
         <View className="flex-row justify-between items-center">
           <Text className="font-bold text-lg text-gray-800">{item.name}</Text>
-          <Text className="text-xs text-gray-400">2m ago</Text>
+          <Text className=
+          "text-xs text-gray-400">2m ago</Text>
         </View>
-        <Text className={`text-sm ${item.unread ? 'font-bold text-gray-900' : 'text-gray-500'}`} numberOfLines={1}>
+        <Text 
+          className={`text-sm mt-1 ${item.unread ? 'font-bold text-gray-900' : 'text-gray-500'}`} 
+          numberOfLines={1}
+        >
           {item.lastMessage}
         </Text>
-        <Text className="text-[10px] text-gray-400 mt-1">Owner: {item.ownerName}</Text>
+        <Text className="text-[10px] text-gray-400 mt-1 uppercase font-bold tracking-wider">
+          Owner: {item.ownerName}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -41,7 +47,7 @@ export default function ChatsScreen() {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <View className="p-4 border-b border-gray-100">
-        <Text className="text-2xl font-black text-gray-800">Direct Barks</Text>
+        <Text className="text-2xl font-black text-gray-800 tracking-tighter">Direct Barks</Text>
       </View>
 
       {matches.length === 0 ? (
@@ -50,8 +56,8 @@ export default function ChatsScreen() {
             <MessageCircle size={48} color="#9CA3AF" />
           </View>
           <Text className="text-xl font-bold text-gray-800 text-center">No matches yet!</Text>
-          <Text className="text-gray-500 text-center mt-2">
-            Start sniffing around to find some playmates.
+          <Text className="text-gray-500 text-center mt-2 leading-5">
+            Start sniffing around the discovery deck to find some playmates.
           </Text>
         </View>
       ) : (
