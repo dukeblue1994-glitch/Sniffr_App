@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sniffr - Dog Dating App
 
-## Getting Started
+Sniffr is a dating app for dogs (and their humans), featuring both a web application and mobile app.
 
-First, run the development server:
+## 🚀 Quick Start
 
+**Before you begin**, you need to configure API keys and services. See:
+- **[CHECKLIST.md](./CHECKLIST.md)** - Pre-upload checklist and current status
+- **[SETUP.md](./SETUP.md)** - Complete setup guide with step-by-step instructions
+
+## Project Structure
+
+- **Web App** (Next.js) - Root directory
+- **Mobile App** (React Native/Expo) - `/mobile` directory
+
+## Web App Setup
+
+### 1. Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure Environment Variables
+```bash
+cp .env.example .env.local
+# Edit .env.local with your credentials
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Required credentials:
+- `NEXTAUTH_SECRET` - Session encryption key
+- `GOOGLE_CLIENT_ID` & `GOOGLE_CLIENT_SECRET` - Google OAuth
+- `APPLE_CLIENT_ID`, `APPLE_TEAM_ID`, `APPLE_KEY_ID`, `APPLE_PRIVATE_KEY` - Apple OAuth
+- `OPENAI_API_KEY` (optional) - AI features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+See [SETUP.md](./SETUP.md) for detailed instructions on obtaining these credentials.
+
+### 3. Run Development Server
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser.
+
+### 4. Build for Production
+```bash
+npm run build
+npm start
+```
+
+## Mobile App Setup
+
+### 1. Navigate to Mobile Directory
+```bash
+cd mobile
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+```
+
+### 3. Configure Firebase
+Edit `mobile/src/lib/firebase.ts` with your Firebase project credentials.
+
+Download Firebase service files:
+- `GoogleService-Info.plist` (iOS)
+- `google-services.json` (Android)
+
+See [SETUP.md](./SETUP.md) for detailed Firebase setup instructions.
+
+### 4. Run Development
+```bash
+npm start          # Start Expo dev server
+npm run ios        # Run on iOS simulator
+npm run android    # Run on Android emulator
+npm run web        # Run in web browser
+```
+
+### 5. Build for Production
+```bash
+# Install EAS CLI
+npm install -g eas-cli
+
+# Login to Expo
+eas login
+
+# Build
+eas build --platform all
+```
+
+## Features
+
+- 🔐 Authentication (Google Sign-in, Apple Sign-in)
+- 🤖 AI-powered bio generation
+- 💬 Chat functionality
+- 📱 Cross-platform (Web + Mobile)
+- 🔥 Firebase backend (Mobile)
+- 🎨 Modern UI with Tailwind CSS
+
+## Documentation
+
+- [SETUP.md](./SETUP.md) - Complete setup and deployment guide
+- [CHECKLIST.md](./CHECKLIST.md) - Pre-upload checklist
+- [.env.example](./.env.example) - Environment variables template
+
+## Tech Stack
+
+### Web App
+- [Next.js 16](https://nextjs.org) - React framework
+- [NextAuth.js](https://next-auth.js.org) - Authentication
+- [Tailwind CSS](https://tailwindcss.com) - Styling
+- [OpenAI API](https://openai.com) - AI features (optional)
+
+### Mobile App
+- [React Native](https://reactnative.dev) - Mobile framework
+- [Expo](https://expo.dev) - Development platform
+- [Firebase](https://firebase.google.com) - Backend services
+- [Zustand](https://github.com/pmndrs/zustand) - State management
+
+## Deploy
+
+### Web App
+Deploy to [Vercel](https://vercel.com) (recommended), Netlify, or any Node.js hosting platform.
+
+### Mobile App
+Submit to Apple App Store and Google Play Store using [EAS Submit](https://docs.expo.dev/submit/introduction/).
+
+See [SETUP.md](./SETUP.md) for detailed deployment instructions.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Expo Documentation](https://docs.expo.dev/)
+- [Firebase Documentation](https://firebase.google.com/docs)
+- [NextAuth.js Documentation](https://next-auth.js.org/)
