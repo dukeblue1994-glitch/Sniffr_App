@@ -30,6 +30,8 @@ Create a `.env.local` file in the root directory (copy from `.env.example`):
 cp .env.example .env.local
 ```
 
+Place `.env.local` in the project root (same folder as `package.json`). The web UI component at `src/components/SniffrApp.tsx` is a client component—keep the top-of-file directive exactly as `"use client";` so the interactive UI works.
+
 ### 3. Required API Keys & Configuration
 
 #### NextAuth Secret (REQUIRED)
