@@ -34,6 +34,10 @@ Required credentials:
 
 See [SETUP.md](./SETUP.md) for detailed instructions on obtaining these credentials.
 
+Notes:
+- Put the `.env.local` file in the project root (same folder as `package.json`); `src/app/api/ai/route.ts` reads `OPENAI_API_KEY` from there for AI calls used by `SniffrApp`.
+- `src/components/SniffrApp.tsx` is a client component—keep the top-of-file directive exactly as `"use client";` when editing.
+
 ### 3. Run Development Server
 ```bash
 npm run dev
