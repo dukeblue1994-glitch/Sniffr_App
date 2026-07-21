@@ -31,6 +31,7 @@ Required credentials:
 - `GOOGLE_CLIENT_ID` & `GOOGLE_CLIENT_SECRET` - Google OAuth
 - `APPLE_CLIENT_ID`, `APPLE_TEAM_ID`, `APPLE_KEY_ID`, `APPLE_PRIVATE_KEY` - Apple OAuth
 - `OPENAI_API_KEY` (optional) - AI features
+- **Where to get the keys:** Generate the NextAuth secret locally, create OAuth credentials in Google Cloud Console, create the Apple key in Apple Developer, grab the OpenAI key from the OpenAI Dashboard → API keys, and copy the Firebase values from Firebase Console → Project Settings → Your apps → SDK setup and configuration.
 
 See [SETUP.md](./SETUP.md) for detailed instructions on obtaining these credentials.
 
